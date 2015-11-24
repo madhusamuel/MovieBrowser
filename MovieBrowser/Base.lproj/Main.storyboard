@@ -10,16 +10,19 @@
             <objects>
                 <tableViewController id="J3T-no-dkj" customClass="MovieTableViewController" customModule="MovieBrowser" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="nMf-hX-6pJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell" rowHeight="107" id="mHK-ge-VH7" customClass="MovieTableViewCell" customModule="MovieBrowser" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="92" width="600" height="107"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mHK-ge-VH7" id="e8o-t1-Z0C">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="106.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b9A-eW-QMs">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="b9A-eW-QMs">
                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                             <animations/>
                                             <constraints>
@@ -45,9 +48,6 @@
                                             <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
-                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                <rect key="frame" x="99" y="38" width="293" height="30.5"/>
-                                            </variation>
                                         </label>
                                     </subviews>
                                     <animations/>
@@ -64,11 +64,11 @@
                                             <exclude reference="VMx-gs-WfY"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <exclude reference="F3i-tH-CIE"/>
-                                            <exclude reference="Xet-pe-LaI"/>
                                             <exclude reference="7Jw-3y-V9Y"/>
                                             <exclude reference="ChE-Jr-a0f"/>
                                             <exclude reference="MIe-5S-kvo"/>
+                                            <exclude reference="F3i-tH-CIE"/>
+                                            <exclude reference="Xet-pe-LaI"/>
                                         </mask>
                                     </variation>
                                     <variation key="heightClass=regular-widthClass=compact">
@@ -77,11 +77,11 @@
                                             <include reference="VMx-gs-WfY"/>
                                         </mask>
                                         <mask key="constraints">
-                                            <include reference="F3i-tH-CIE"/>
-                                            <include reference="Xet-pe-LaI"/>
                                             <include reference="7Jw-3y-V9Y"/>
                                             <include reference="ChE-Jr-a0f"/>
                                             <include reference="MIe-5S-kvo"/>
+                                            <include reference="F3i-tH-CIE"/>
+                                            <include reference="Xet-pe-LaI"/>
                                         </mask>
                                     </variation>
                                 </tableViewCellContentView>
@@ -92,8 +92,10 @@
                                 </connections>
                             </tableViewCell>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadingTableViewCell" rowHeight="107" id="9kH-vo-Cu3" customClass="LoadingTableViewCell" customModule="MovieBrowser" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="199" width="600" height="107"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9kH-vo-Cu3" id="ePJ-tB-KoU">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="106.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Movies ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FY-5x-x4Q">
@@ -168,4 +170,7 @@
             <point key="canvasLocation" x="273" y="33"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="placeholder" width="300" height="300"/>
+    </resources>
 </document>

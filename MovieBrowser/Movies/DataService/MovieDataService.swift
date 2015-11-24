@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MovieDataService {
     
@@ -45,6 +46,25 @@ class MovieDataService {
         }
         
         task.resume()
+    }
+    
+    func fetchImage(imageURL: String, success: (image: UIImage) -> (), failure: (error: NSError) -> ()) {
+        let downloadImageTask = NSURLSession.sharedSession().downloadTaskWithURL(NSURL(string: imageURL)!) { (downloadedURL: NSURL?, response: NSURLResponse?, error: NSError?) -> Void in
+            if error == nil {
+                let image = UIImage(data: NSData(contentsOfURL: downloadedURL!)!)
+                dispatch_async(dispatch_get_main_queue(), {
+                    if let image = image {
+                        success(image: image)
+                    } else {
+                        failure(error: NSError(domain: "NO IMAGE", code: 101, userInfo: nil))
+                    }
+                })
+            } else {
+                failure(error: error!)
+            }
+
+        }
+        downloadImageTask.resume()
     }
     
 }

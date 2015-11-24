@@ -12,9 +12,11 @@ class MovieTableViewController: UITableViewController {
     
     var movies: [Movie] = []
     let movieDataService = MovieDataService()
+    var placeholderImage: UIImage!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        placeholderImage = UIImage(named: "placeholder")
     }
     
     var currentOffset = 0
@@ -53,6 +55,14 @@ class MovieTableViewController: UITableViewController {
             let cell = tableView.dequeueReusableCellWithIdentifier("MovieTableViewCell") as! MovieTableViewCell
             let movie = movies[indexPath.row]
             cell.movieTitle.text = movie.name
+            if let image = movie.image {
+                cell.movieImageView.image = image
+            } else {
+                cell.movieImageView.image = placeholderImage
+                if let imageURL = movie.thumbnailSource {
+                    fetchImage(imageURL, indexPath: indexPath)
+                }
+            }
             return cell
         } else {
             print("Loading cell")
@@ -61,6 +71,22 @@ class MovieTableViewController: UITableViewController {
             fetchMovies()
             return cell
         }
+    }
+    
+    func fetchImage(imageURL: String, indexPath: NSIndexPath) {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_LOW, 0), {
+            self.movieDataService.fetchImage(imageURL, success: { (image: UIImage) -> () in
+                    var cell = self.tableView.cellForRowAtIndexPath(indexPath) as? MovieTableViewCell
+                    if let cell = cell {
+                        cell.movieImageView.image = image
+                    }
+                
+                    self.movies[indexPath.row].image = image
+                }, failure: {(error) -> () in
+                    print(error)
+                    
+            })
+        })
     }
 
     /*

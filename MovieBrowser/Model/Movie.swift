@@ -7,12 +7,15 @@
 //
 
 import Foundation
+import UIKit
 
 class Movie: Mappable {
     
     var id: Int?
     var name: String?
     var capsuleReview: String?
+    var thumbnailSource: String?
+    var image: UIImage?
     
     class func newInstance() -> Mappable {
         return Movie()
@@ -22,5 +25,6 @@ class Movie: Mappable {
         id <- map["nyt_movie_id"]
         name <- map["display_title"]
         capsuleReview <- map["capsule_review"]
+        thumbnailSource <- map["multimedia.resource.src"]
     }
 }
