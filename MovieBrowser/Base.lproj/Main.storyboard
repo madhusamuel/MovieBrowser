@@ -133,7 +133,7 @@
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="movieTitle" destination="4FY-5x-x4Q" id="azS-VP-IEo"/>
+                                    <outlet property="titleLabel" destination="4FY-5x-x4Q" id="fae-qY-Ar3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

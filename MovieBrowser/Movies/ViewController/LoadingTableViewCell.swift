@@ -10,4 +10,5 @@ import UIKit
 
 class LoadingTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var titleLabel: UILabel!
 }

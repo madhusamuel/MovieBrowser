@@ -15,20 +15,25 @@ class MovieTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchMovies()
     }
     
     var currentOffset = 0
+    //invoked from cellforrow at indexpath
     func fetchMovies() {
+        print("fetchMovies() - offset \(currentOffset)")
         //TODO manage indicator - whats the industry standard?
-        UIApplication.sharedApplication().networkActivityIndicatorVisible = true
-        movieDataService.fetchMovies(currentOffset, success: { (movies) -> () in
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), {
+            UIApplication.sharedApplication().networkActivityIndicatorVisible = true
+            self.movieDataService.fetchMovies(self.currentOffset, success: { (movies) -> () in
                 self.movies += movies
                 self.tableView.reloadData()
+                self.currentOffset += 20
                 UIApplication.sharedApplication().networkActivityIndicatorVisible = false
-            }) { (error) -> () in
-                print(error)
-        }
+                }) { (error) -> () in
+                    print(error)
+            }
+        })
+        
     }
 
     // MARK: - Table view data source
@@ -38,15 +43,24 @@ class MovieTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return movies.count
+        return movies.count + 1
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("MovieTableViewCell") as! MovieTableViewCell
+        
         print("row -> \(indexPath.row)")
-        let movie = movies[indexPath.row]
-        cell.movieTitle.text = movie.name
-        return cell
+        if indexPath.row < movies.count {
+            let cell = tableView.dequeueReusableCellWithIdentifier("MovieTableViewCell") as! MovieTableViewCell
+            let movie = movies[indexPath.row]
+            cell.movieTitle.text = movie.name
+            return cell
+        } else {
+            print("Loading cell")
+            let cell = tableView.dequeueReusableCellWithIdentifier("LoadingTableViewCell") as! LoadingTableViewCell
+            cell.titleLabel.text = "Loading Movies \(currentOffset) to \(currentOffset + 20)..."
+            fetchMovies()
+            return cell
+        }
     }
 
     /*
