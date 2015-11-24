@@ -8,6 +8,18 @@
 
 import Foundation
 
-class Movie {
+class Movie: Mappable {
     
+    var id: Int?
+    var name: String?
+    var capsuleReview: String?
+    
+    class func newInstance() -> Mappable {
+        return Movie()
+    }
+    
+    func mapping(map: Map) {
+        id <- map["id"]
+        name <- map["name"]
+    }
 }
