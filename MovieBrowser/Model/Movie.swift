@@ -19,7 +19,8 @@ class Movie: Mappable {
     }
     
     func mapping(map: Map) {
-        id <- map["id"]
-        name <- map["name"]
+        id <- map["nyt_movie_id"]
+        name <- map["display_title"]
+        capsuleReview <- map["capsule_review"]
     }
 }

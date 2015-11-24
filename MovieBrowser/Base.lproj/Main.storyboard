@@ -5,22 +5,136 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
     </dependencies>
     <scenes>
-        <!--Table View Controller-->
+        <!--Movie Table View Controller-->
         <scene sceneID="jGm-JX-ZUI">
             <objects>
-                <tableViewController id="J3T-no-dkj" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="nMf-hX-6pJ">
+                <tableViewController id="J3T-no-dkj" customClass="MovieTableViewController" customModule="MovieBrowser" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="97" sectionHeaderHeight="28" sectionFooterHeight="28" id="nMf-hX-6pJ">
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="mHK-ge-VH7">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="MovieTableViewCell" rowHeight="107" id="mHK-ge-VH7" customClass="MovieTableViewCell" customModule="MovieBrowser" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="mHK-ge-VH7" id="e8o-t1-Z0C">
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="b9A-eW-QMs">
+                                            <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="75" id="Dky-d7-xYr"/>
+                                                <constraint firstAttribute="width" constant="75" id="Ggs-XG-6Zr"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="Dky-d7-xYr"/>
+                                                    <exclude reference="Ggs-XG-6Zr"/>
+                                                </mask>
+                                            </variation>
+                                            <variation key="heightClass=regular-widthClass=compact">
+                                                <mask key="constraints">
+                                                    <include reference="Dky-d7-xYr"/>
+                                                    <include reference="Ggs-XG-6Zr"/>
+                                                </mask>
+                                            </variation>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMx-gs-WfY">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                                <rect key="frame" x="99" y="38" width="293" height="30.5"/>
+                                            </variation>
+                                        </label>
+                                    </subviews>
                                     <animations/>
+                                    <constraints>
+                                        <constraint firstAttribute="trailing" secondItem="VMx-gs-WfY" secondAttribute="trailing" constant="8" id="7Jw-3y-V9Y"/>
+                                        <constraint firstItem="VMx-gs-WfY" firstAttribute="centerY" secondItem="e8o-t1-Z0C" secondAttribute="centerY" id="ChE-Jr-a0f"/>
+                                        <constraint firstItem="b9A-eW-QMs" firstAttribute="leading" secondItem="e8o-t1-Z0C" secondAttribute="leading" constant="16" id="F3i-tH-CIE"/>
+                                        <constraint firstItem="VMx-gs-WfY" firstAttribute="leading" secondItem="b9A-eW-QMs" secondAttribute="trailing" constant="8" id="MIe-5S-kvo"/>
+                                        <constraint firstItem="b9A-eW-QMs" firstAttribute="centerY" secondItem="e8o-t1-Z0C" secondAttribute="centerY" id="Xet-pe-LaI"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="b9A-eW-QMs"/>
+                                            <exclude reference="VMx-gs-WfY"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="F3i-tH-CIE"/>
+                                            <exclude reference="Xet-pe-LaI"/>
+                                            <exclude reference="7Jw-3y-V9Y"/>
+                                            <exclude reference="ChE-Jr-a0f"/>
+                                            <exclude reference="MIe-5S-kvo"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="b9A-eW-QMs"/>
+                                            <include reference="VMx-gs-WfY"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="F3i-tH-CIE"/>
+                                            <include reference="Xet-pe-LaI"/>
+                                            <include reference="7Jw-3y-V9Y"/>
+                                            <include reference="ChE-Jr-a0f"/>
+                                            <include reference="MIe-5S-kvo"/>
+                                        </mask>
+                                    </variation>
                                 </tableViewCellContentView>
                                 <animations/>
+                                <connections>
+                                    <outlet property="movieImageView" destination="b9A-eW-QMs" id="9lm-OZ-2nC"/>
+                                    <outlet property="movieTitle" destination="VMx-gs-WfY" id="MM4-8V-5s0"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="LoadingTableViewCell" rowHeight="107" id="9kH-vo-Cu3" customClass="LoadingTableViewCell" customModule="MovieBrowser" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9kH-vo-Cu3" id="ePJ-tB-KoU">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading Movies ..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4FY-5x-x4Q">
+                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                            <animations/>
+                                            <fontDescription key="fontDescription" name="Avenir-Medium" family="Avenir" pointSize="17"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <animations/>
+                                    <constraints>
+                                        <constraint firstItem="4FY-5x-x4Q" firstAttribute="leading" secondItem="ePJ-tB-KoU" secondAttribute="leading" constant="8" id="FKn-Vk-UiR"/>
+                                        <constraint firstAttribute="trailing" secondItem="4FY-5x-x4Q" secondAttribute="trailing" constant="8" id="JwH-LR-50P"/>
+                                        <constraint firstItem="4FY-5x-x4Q" firstAttribute="centerY" secondItem="ePJ-tB-KoU" secondAttribute="centerY" id="d0u-41-PbZ"/>
+                                    </constraints>
+                                    <variation key="default">
+                                        <mask key="subviews">
+                                            <exclude reference="4FY-5x-x4Q"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <exclude reference="FKn-Vk-UiR"/>
+                                            <exclude reference="JwH-LR-50P"/>
+                                            <exclude reference="d0u-41-PbZ"/>
+                                        </mask>
+                                    </variation>
+                                    <variation key="heightClass=regular-widthClass=compact">
+                                        <mask key="subviews">
+                                            <include reference="4FY-5x-x4Q"/>
+                                        </mask>
+                                        <mask key="constraints">
+                                            <include reference="FKn-Vk-UiR"/>
+                                            <include reference="JwH-LR-50P"/>
+                                            <include reference="d0u-41-PbZ"/>
+                                        </mask>
+                                    </variation>
+                                </tableViewCellContentView>
+                                <animations/>
+                                <connections>
+                                    <outlet property="movieTitle" destination="4FY-5x-x4Q" id="azS-VP-IEo"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>

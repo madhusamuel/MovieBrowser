@@ -21,14 +21,19 @@ class MovieDataService {
                     print("results ---> \(json["num_results"])")
                     
                     guard let results = json["results"] as? [Dictionary<String, AnyObject>] else {
-                        success(movies:[])
+                        dispatch_async(dispatch_get_main_queue(), {
+                            success(movies:[])
+                        })
+                        
                         return
                     }
                     let movies = results.map {(result) -> Movie in
                         return Mapper().map(result, toObject: Movie())
                     }
                     
-                    success(movies: movies)
+                    dispatch_async(dispatch_get_main_queue(), {
+                        success(movies: movies)
+                    })
                 } catch let JSONError as NSError {
                     //json parsing error
                     failure(error: JSONError)
